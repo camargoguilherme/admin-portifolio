@@ -1,0 +1,19 @@
+.item-main{
+  width: 60vw;
+  height: 20vh;
+  background-color: var(--secondary);
+  border-radius: 2%
+}
+
+.item-main{
+  
+}
+
+.color-blue{
+}
+
+.item-list-option{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
