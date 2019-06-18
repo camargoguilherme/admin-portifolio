@@ -10,9 +10,8 @@ export const PROFILE = async () => {
   return profile.data
 }
 
-export const ABOUT = async () => {
-  const about = await api.get('/about')
-  return about.data
+export const ABOUT = () => {
+    
 }
 
 export const SKILLS = async () => {

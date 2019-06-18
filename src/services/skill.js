@@ -28,4 +28,4 @@ class SkillAPI{
 
 }
 
-export default SkillAPI;
+export default new SkillAPI;

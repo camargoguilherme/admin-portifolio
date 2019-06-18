@@ -1,29 +1,32 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
-import Main from "../pages/Main";
-import About from "../pages/About";
-import Details from "../pages/Details";
-import Media from "../pages/Media";
-import Portifolio from "../pages/Portifolio";
-import Profile from "../pages/Profile";
-import Skill from "../pages/Skill";
 import Header from "../components/Header";
+
+import About from '../routes/about';
+import Details from "../routes/details";
+// import Media from "../routes/Media";
+// import Portifolio from "../routes/Portifolio";
+// import Profile from "../routes/Profile";
+import Skill from "../routes/skill";
 
 class Router extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Main} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/details" component={Details} />
-          <Route exact path="/media" component={Media} />
-          <Route exact path="/portifolio" component={Portifolio} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/skill" component={Skill} />
-        </Switch>
+        <div className="container">
+          <Header />
+          <Switch>
+              <Route exact path='/about' component={ About } />
+              <Route exact path='/details' component={ Details } />
+              {
+//           <Route exact path="/media" component={Media} />
+//           <Route exact path="/portifolio" component={Portifolio} />
+//           <Route exact path="/profile" component={Profile} />
+              }
+              <Route exact path='/skill' component={ Skill } />
+          </Switch>
+        </div>
       </BrowserRouter>
     );
   }

@@ -1,6 +1,6 @@
 import api from "./api";
 
-class AboutAPI{
+class AboutAPI {
   findAll = async () => {
     const about = await api.get('/about')
     return about.data
@@ -25,7 +25,6 @@ class AboutAPI{
     const about = await api.delete(`/about/${id}`)
     return about.data
   }
-
 }
 
-export default AboutAPI;
+export default new AboutAPI;

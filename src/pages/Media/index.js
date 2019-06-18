@@ -1,9 +1,12 @@
+// index.component.js
 import React, { Component } from 'react';
 
-// import { Container } from './styles';
-
-export default class Media extends Component {
+export default class Index extends Component {
   render() {
-    return <div />;
+    return (
+      <div>
+        <p>Welcome to Index Component!!</p>
+      </div>
+    )
   }
 }
