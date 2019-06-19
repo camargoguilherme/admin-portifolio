@@ -28,4 +28,4 @@ class MediaAPI{
 
 }
 
-export default MediaAPI;
+export default new MediaAPI;

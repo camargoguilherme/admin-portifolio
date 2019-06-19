@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 import ItemMenu from '../ItemMenu';
-import api from '../../services/api';
 
 const menus = [
-  {
-    path: '/',
-    title: 'Home'
-  },
+
   {
     path: '/profile',
     title: 'Perfil'
@@ -16,6 +12,10 @@ const menus = [
   {
     path: '/about',
     title: 'Sobre'
+  },
+  {
+    path: '/portifolio',
+    title: 'Portifolio'
   },
   {
     path: '/details',

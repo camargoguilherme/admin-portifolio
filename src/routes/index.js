@@ -5,9 +5,9 @@ import Header from "../components/Header";
 
 import About from '../routes/about';
 import Details from "../routes/details";
-// import Media from "../routes/Media";
+import Media from "../routes/media";
 // import Portifolio from "../routes/Portifolio";
-// import Profile from "../routes/Profile";
+import Profile from "../routes/profile";
 import Skill from "../routes/skill";
 
 class Router extends Component {
@@ -17,14 +17,14 @@ class Router extends Component {
         <div className="container">
           <Header />
           <Switch>
-              <Route exact path='/about' component={ About } />
-              <Route exact path='/details' component={ Details } />
+            <Route exact path='/about' component={ About } />
+            <Route exact path='/details' component={ Details } />
+            <Route exact path="/media" component={ Media } />
               {
-//           <Route exact path="/media" component={Media} />
-//           <Route exact path="/portifolio" component={Portifolio} />
-//           <Route exact path="/profile" component={Profile} />
+//           <Route exact path="/portifolio" component={ Portifolio } />
               }
-              <Route exact path='/skill' component={ Skill } />
+            <Route exact path="/profile" component={ Profile } /> 
+            <Route exact path='/skill' component={ Skill } />
           </Switch>
         </div>
       </BrowserRouter>

@@ -28,4 +28,4 @@ class ProfileAPI{
 
 }
 
-export default ProfileAPI;
+export default new ProfileAPI;

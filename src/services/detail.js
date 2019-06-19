@@ -28,4 +28,4 @@ class DetailAPI{
 
 }
 
-export default DetailAPI;
+export default new DetailAPI;

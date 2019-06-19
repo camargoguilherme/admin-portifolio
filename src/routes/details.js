@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, } from "react-router-dom";
+import { BrowserRouter, Route, } from "react-router-dom";
 
 import Create from '../pages/Details/create';
 import Edit from '../pages/Details/edit';
@@ -9,11 +9,11 @@ class Details extends Component {
   render() {
     const path = this.props.location.pathname;
     return (
-      <Switch>
+      <BrowserRouter>
           <Route path={`${path}/create`} component={ Create } />
           <Route path={`${path}/edit/:id`} component={ Edit } />
-          {/* <Route exact path={`${path}`} component={ Index } /> */}
-      </Switch>
+          <Route exact path={`${path}`} component={ Index } />
+      </BrowserRouter>
     );
   }
 }

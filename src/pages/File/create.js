@@ -6,8 +6,7 @@ import AboutAPI from '../../services/about';
 export default class Create extends Component {
   constructor(props) {
     super(props);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeItems = this.onChangeItems.bind(this);
+    this.onChangeFile = this.onChangeFile.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onCancel = this.onCancel.bind(this);
 
@@ -16,16 +15,32 @@ export default class Create extends Component {
       items: []
     }
   }
-  onChangeTitle(e) {
+  onChangeFile(e) {
     this.setState({
       title: e.target.value
     });
   }
-  onChangeItems(e) {
-    this.setState({
-      items: e.target.value.split('\n')
-    })  
+
+  onFormSubmit(e){
+    e.preventDefault() // Stop form submit
+    this.fileUpload(this.state.file).then((response)=>{
+      console.log(response.data);
+    })
   }
+  onChange(e) {
+    this.setState({file:e.target.files[0]})
+  }
+  fileUpload(file){
+    const url = 'http://example.com/file-upload';
+    const formData = new FormData();
+    formData.append('file',file)
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    }
+    return  post(url, formData,config)
+  } 
 
   onSubmit(e) {
     e.preventDefault();
@@ -61,7 +76,7 @@ export default class Create extends Component {
               type="text" 
               className="form-control" 
               value={this.state.title}
-              onChange={this.onChangeTitle}
+              onChange={this.onChangeFile}
               />
           </div>
           <div className="form-group">
@@ -69,7 +84,7 @@ export default class Create extends Component {
             <textarea row="10" 
               className="form-control"
               value={this.state.items.join('\n')}
-              onChange={this.onChangeItems}
+              onChange={this.onChangeCurriculum}
               />
           </div>
           <div className="form-group">
