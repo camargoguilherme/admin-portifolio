@@ -1,16 +1,14 @@
 // edit.js
 import React, { Component } from 'react';
-import ProfileAPI from '../../services/profile';
+import Dropzone from 'react-dropzone';
 import { Link} from "react-router-dom";
+
+import ProfileAPI from '../../services/profile';
 
 export default class Edit extends Component {
   constructor(props) {
     super(props);
-    this.onChangeName = this.onChangeName.bind(this);
-    this.onChangeResume = this.onChangeResume.bind(this);
-    this.onChangeArea = this.onChangeArea.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePhone = this.onChangePhone.bind(this);
+
     this.onSubmit = this.onSubmit.bind(this);
     this.onCancel = this.onCancel.bind(this);
 
@@ -19,88 +17,67 @@ export default class Edit extends Component {
       resume: '',
       email: '',
       area: '',
-      phone: ''
+      phone: '',
+      avatar: null,
+      curriculum: null,
+      pathAvatar: '',
+      pathCurriculum: ''
     }
   }
 
-  componentDidMount() {    
+  async componentDidMount() {    
     ProfileAPI.find(this.props.match.params.id)
-    .then(response => {
-      this.setState({ 
-        name: response.name,
-        resume: response.resume,
-        email: response.email,
-        area: response.area,
-        phone: response.phone
+    .then( res =>{
+      this.setState({
+        name: res.name,
+        resume: res.resume,
+        email: res.email,
+        area: res.area,
+        phone: res.phone,
+        pathAvatar: res.avatar,
+        pathCurriculum: res.curriculum
       })
     })
     .catch(function (error) {
         console.log(error);
     })
   }
+    
+  onChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
 
-    onChangeName(e) {
-      this.setState({
-        name: e.target.value
-      });
-    }
-    onChangeResume(e) {
-      this.setState({
-        resume: e.target.value
-      })  
-    }
-  
-    onChangeEmail(e) {
-      this.setState({
-        email: e.target.value
-      });
-    }
-  
-    onChangeArea(e) {
-      this.setState({
-        area: e.target.value
-      })  
-    }
-  
-    onChangePhone(e) {
-      this.setState({
-        phone: e.target.value
-      })  
-    }
-  
-    onSubmit(e) {
-      e.preventDefault();
-      const profile = {
-        name: this.state.name,
-        resume: this.state.resume,
-        email: this.state.email,
-        area: this.state.area,
-        phone: this.state.phone
-      };
-      
-      ProfileAPI.create(profile).then( () =>{
-        this.props.history.push('/profile')
-      })
-      
-    }
+  onChangeAvatar = (files) =>{
+    this.setState({ avatar: files[files.length-1]})
+  }
 
-  onSubmit(e) {
+  onChangeCurriculum = (files) => {
+    this.setState({ curriculum: files[files.length-1]})
+  }
+
+  onSubmit = (e) =>{
     e.preventDefault();
-    const profile = {
-      name: this.state.name,
-      resume: this.state.resume,
-      email: this.state.email,
-      area: this.state.area,
-      phone: this.state.phone,
-      id: this.props.match.params.id
-    };
+    let data = new FormData();
+    
+    data.append('name', this.state.name);
+    data.append('resume', this.state.resume);
+    data.append('email', this.state.email);
+    data.append('area', this.state.area);
+    data.append('phone', this.state.phone);
+    data.append('avatar', this.state.avatar);
+    data.append('curriculum', this.state.curriculum);
+    data.append('_method', 'PUT');
 
-    ProfileAPI.update(profile).then( () =>{
+    const id = this.props.match.params.id;
+
+    ProfileAPI.update(id, data).then( () =>{
       this.props.history.push('/profile');  
     })
     
   }
-  onCancel(e){
+  onCancel = (e) => {
     e.preventDefault();
     this.props.history.push('/profile')
   }
@@ -110,56 +87,92 @@ export default class Edit extends Component {
       <div style={{ marginTop: 10 }}>
         <h3 align="center">Editar</h3>
         <form onSubmit={this.onSubmit} >
-        <div className="form-group">
-            <label>Nome:  </label>
+          <div className="form-group">
+          <label>Nome:  </label>
             <input 
               type="text" 
+              name="name"
+              placeholder="Felix o gato"
               className="form-control" 
               value={this.state.name}
-              onChange={this.onChangeName}
+              onChange={this.onChange}
               />
           </div>
           <div className="form-group">
             <label>Resumo:  </label>
             <input 
-              type="text" 
+              type="text"
+              name="resume"
+              placeholder="Seu resumo aqui"
               className="form-control" 
               value={this.state.resume}
-              onChange={this.onChangeResume}
+              onChange={this.onChange}
               />
           </div>
           <div className="form-group">
             <label>E-mail:  </label>
             <input 
-              type="email" 
+              type="email"
+              name="email"
+              placeholder="exemplo@email.com"
               className="form-control" 
               value={this.state.email}
-              onChange={this.onChangeEmail}
+              onChange={this.onChange}
               />
           </div>
           <div className="form-group">
             <label>Área:  </label>
             <input 
-              type="text" 
+              type="text"
+              name="area"
+              placeholder="Area de Atuação"
               className="form-control" 
               value={this.state.area}
-              onChange={this.onChangeArea}
+              onChange={this.onChange}
               />
           </div>
           <div className="form-group">
             <label>Telefone:  </label>
             <input 
-              type="tel" 
+              type="tel"
+              name="phone"
+              placeholder="(99) 99999-9999"
               className="form-control" 
               value={this.state.phone}
-              onChange={this.onChangePhone}
+              onChange={this.onChange}
               />
           </div>
+          <div className="form-group box-container">
+            <label>Avatar:  </label>
+            <Dropzone onDropAccepted={this.onChangeAvatar}>
+              {({ getRootProps, getInputProps}) =>(
+                <div className="upload" {...getRootProps()}>
+                  <input name="avatar" {...getInputProps()}/>
+                  <p>Arraste arquivos ou clique aqui</p>
+                </div>
+              )}
+            </Dropzone>
+            <img src={this.state.pathAvatar} alt="My Profile" height="100" width="100" />
+          </div>
+
+          <div className="form-group box-container">
+            <label>Curriculo:  </label>
+            <Dropzone onDropAccepted={this.onChangeCurriculum}>
+              {({ getRootProps, getInputProps}) =>(
+                <div className="upload" {...getRootProps()}>
+                  <input name="curriculum" {...getInputProps()}/>
+                  <p>Arraste arquivos ou clique aqui</p>
+                </div>
+              )}
+            </Dropzone>
+          </div>
+          
           <div className="form-group">
-            <input type="submit" 
-              value="Salvar" 
-              className="btn btn-primary"/>
-            <button className="btn btn-danger" onClick={this.onCancel}>Cancelar</button>
+            <div>
+              <input type="submit" value="Salvar" className="btn btn-primary"/>
+            
+              <button className="btn btn-danger" onClick={this.onCancel}>Cancelar</button>            
+            </div>
           </div>
         </form>
       </div>

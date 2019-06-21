@@ -1,6 +1,5 @@
 // create.js
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import AboutAPI from '../../services/about';
 
 export default class Create extends Component {
@@ -53,7 +52,7 @@ export default class Create extends Component {
     const path = this.props.location.pathname;
     return (
       <div style={{ marginTop: 10 }}>
-        <h3>Sobre</h3>
+        <h3>Sobre - Novo</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Titulo:  </label>

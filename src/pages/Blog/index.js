@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 import TableRow from './TableRow';
-import AboutAPI from '../../services/about';
+import BlogAPI from '../../services/blog';
 
 export default class Index extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      about: [],
+      blog: [],
       pathname: this.props.location.pathname
     };
     this.onDelete = this.onDelete.bind(this);
@@ -20,44 +20,48 @@ export default class Index extends Component {
   }
 
   async searchAbout(){
-    const about = await AboutAPI.findAll();
-    this.setState({about: about})
+    const blog = await BlogAPI.findAll();
+    this.setState({blog: blog})
   }
 
   tabRow(){
     this.searchAbout().then();
-    return this.state.about.map( (item, index) =>{
-      return <TableRow onDelete={this.onDelete} pathname={this.state.pathname} item={item} key={index} />
+    return this.state.blog.map( (item, index) =>{
+      return <TableRow onDelete={this.onDelete} pathname={this.state.pathname} blog={item} key={index} />
     })
   }
 
   onDelete(id) {
-    AboutAPI.delete(id)
+    BlogAPI.delete(id)
     .then( response =>{
-      this.props.location('/about')
+      this.props.history.push('/blog')
     }).catch( error =>{
-      this.props.history.push('/about')
+      this.props.history.push('/blog')
     })
   }
 
   render() {
     return (
       <div>
-        <h3 align="center">Sobre</h3>
+        <h3 align="center">Blog</h3>
         <table className="table table-striped" style={{ marginTop: 20 }}>
           <thead>
             <tr>
               <th>Titulo</th>
-              <th>Items</th>
+              <th>Resumo</th>
+              <th>Link</th>
+              <th>Capa</th>
               <th colSpan="2">Ações</th>
             </tr>
           </thead>
           <tbody>
             { this.tabRow() }
           </tbody>
-          <Link to={`${this.state.pathname}/create`} className="btn btn-success">Novo</Link>
         </table>
+        <div>
+          <Link to={`${this.state.pathname}/create`} className="btn btn-success">Novo</Link>
+        </div>
       </div>
     );
   }
-  }
+}

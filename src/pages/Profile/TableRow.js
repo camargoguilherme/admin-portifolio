@@ -14,7 +14,7 @@ class TableRow extends Component {
   render() {
     
     return (
-      <tr>
+      <tr key={this.state.key}>
         <td>
           {this.state.profile.name}
         </td>
@@ -34,7 +34,11 @@ class TableRow extends Component {
           <img src={this.state.profile.avatar} alt="My Profile" height="100" width="100" />
         </td>
         <td>
-          <a href={this.state.profile.curriculum} /> 
+          {
+            this.state.profile.curriculum ?
+            <a href={this.state.profile.curriculum} className="nav-link" target="_blank">Curriculo</a> :
+            "Sem Curriculo"
+          }
         </td>
         <td>
           <Link to={`${this.state.pathname}/edit/${this.state.profile.id}`} className="btn btn-primary">Editar</Link>

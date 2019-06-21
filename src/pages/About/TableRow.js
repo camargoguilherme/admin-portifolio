@@ -19,7 +19,7 @@ class TableRow extends Component {
           {this.state.item.title}
         </td>
         <td>
-          {this.state.item.items.toString()}
+          {this.state.item.items.join(', ')}
         </td>
         <td>
           <Link to={`${this.state.pathname}/edit/${this.state.item.id}`} className="btn btn-primary">Editar</Link>

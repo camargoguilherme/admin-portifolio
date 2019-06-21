@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 
-import PortifolioAPI from '../../services/portifolio';
+import BlogAPI from '../../services/blog';
 
 export default class Create extends Component {
   constructor(props) {
@@ -13,7 +13,8 @@ export default class Create extends Component {
 
     this.state = {
       title: '',
-      github: '',
+      resume: '',
+      link: '',
       image: null,
       pathImage: ''
     }
@@ -34,45 +35,56 @@ export default class Create extends Component {
     const data = new FormData();
     
     data.append('title', this.state.title);
-    data.append('github', this.state.github);
+    data.append('resume', this.state.resume);
+    data.append('link', this.state.link);
     data.append('image', this.state.image);
     data.append('_method', 'PUT');
     
-    PortifolioAPI.create(data).then( () =>{
-      this.props.history.push('/portifolio');  
+    BlogAPI.create(data).then( () =>{
+      this.props.history.push('/blog');  
     })
     
   }
   onCancel = (e) => {
     e.preventDefault();
-    this.props.history.push('/portifolio')
+    this.props.history.push('/blog')
   }
  
   render() {
-    const path = this.props.location.pathname;
     return (
       <div style={{ marginTop: 10 }}>
-        <h3>Profile</h3>
+        <h3>Blog - Novo</h3>
         <form onSubmit={this.onSubmit}>
-        <div className="form-group">
+          <div className="form-group">
             <label>Titulo:  </label>
             <input 
               type="text" 
               name="title"
-              placeholder="API Portifolio"
+              placeholder="Titulo do post"
               className="form-control" 
               value={this.state.title}
               onChange={this.onChange}
               />
           </div>
           <div className="form-group">
-            <label>GitHub:  </label>
+            <label>Resumo:  </label>
             <input 
               type="text"
-              name="github"
-              placeholder="Link para github"
+              name="resume"
+              placeholder="Resumo do post"
               className="form-control" 
-              value={this.state.github}
+              value={this.state.resume}
+              onChange={this.onChange}
+              />
+          </div>
+          <div className="form-group">
+            <label>Link:  </label>
+            <input 
+              type="text"
+              name="link"
+              placeholder="Link do post"
+              className="form-control" 
+              value={this.state.link}
               onChange={this.onChange}
               />
           </div>
@@ -86,7 +98,7 @@ export default class Create extends Component {
                 </div>
               )}
             </Dropzone>
-            <img src={this.state.pathAvatar} alt="Capa" height="100" width="100" />
+            <img src={this.state.image} alt="Capa" height="100" width="100" />
           </div>
           <div className="form-group">
             <input type="submit" value="Cadastrar" className="btn btn-primary"/>

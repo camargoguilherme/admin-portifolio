@@ -1,6 +1,6 @@
 import api from "./api";
 
-class ProfileAPI{
+class ProfileAPI {
   findAll = async () => {
     const profile = await api.get('/profile')
     return profile.data
@@ -11,13 +11,13 @@ class ProfileAPI{
     return profile.data
   }
   
-  create = async (params) => {
-    const profile = await api.post('/profile', params)
+  create = async (data) => {
+    const profile = await api.post('/profile', data)
     return profile.data
   }
   
-  update = async (params) => {
-    const profile = await api.put(`/profile/${params.id}`, params)
+  update = async (id, data) => {
+    const profile = await api.put(`/profile/${id}`, data)
     return profile.data
   }
   

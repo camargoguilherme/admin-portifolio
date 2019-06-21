@@ -55,8 +55,10 @@ export default class Index extends Component {
           <tbody>
             { this.tabRow() }
           </tbody>
-          <Link to={`${this.state.pathname}/create`} className="btn btn-success">Novo</Link>
         </table>
+        <div>
+          <Link to={`${this.state.pathname}/create`} className="btn btn-success">Novo</Link>
+        </div>
       </div>
     );
   }

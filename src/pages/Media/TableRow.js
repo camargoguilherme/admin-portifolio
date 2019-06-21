@@ -14,10 +14,10 @@ class TableRow extends Component {
     return (
       <tr>
         <td>
-          {this.state.item.link}
+          <a href={this.state.item.link} className="nav-link" target="_blank">{this.state.item.media.split('-')[1].toLocaleUpperCase()}</a>
         </td>
         <td>
-          {this.state.item.media}
+          {this.state.item.media.split('-')[1].toLocaleUpperCase()}
         </td>
         <td>
           <Link to={`${this.state.pathname}/edit/${this.state.item.id}`} className="btn btn-primary">Editar</Link>

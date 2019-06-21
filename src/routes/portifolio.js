@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Create from '../pages/Profile/create';
-import Edit from '../pages/Profile/edit';
-import Index from '../pages/Profile/index';
+import Create from '../pages/Portifolio/create';
+import Edit from '../pages/Portifolio/edit';
+import Index from '../pages/Portifolio/index';
 
-class Profile extends Component {
+class Portifolio extends Component {
   render() {
     const path = this.props.location.pathname;
     return (
@@ -18,4 +18,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default Portifolio;

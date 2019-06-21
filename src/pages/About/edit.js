@@ -60,7 +60,7 @@ export default class Edit extends Component {
   render() {
     return (
       <div style={{ marginTop: 10 }}>
-        <h3 align="center">Editar</h3>
+        <h3 align="center">Sobre - Editar</h3>
         <form onSubmit={this.onSubmit} >
           <div className="form-group">
             <label>Titulo:  </label>

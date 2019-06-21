@@ -53,7 +53,7 @@ export default class Create extends Component {
     const path = this.props.location.pathname;
     return (
       <div style={{ marginTop: 10 }}>
-        <h3>Media</h3>
+        <h3>Media - Novo</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Link:  </label>
