@@ -2,35 +2,34 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { logout } from '../../services/auth';
 import ItemMenu from '../ItemMenu';
-
 const menus = [
 
   {
-    path: "/admin/profile",
+    path: "/admin-portifolio/admin/profile",
     title: "Perfil"
   },
   {
-    path: "/admin/about",
+    path: "/admin-portifolio/admin/about",
     title: "Sobre"
   },
   {
-    path: "/admin/portifolio",
+    path: "/admin-portifolio/admin/portifolio",
     title: "Portifolio"
   },
   {
-    path: "/admin/details",
+    path: "/admin-portifolio/admin/details",
     title: "Detalhes"
   },
   {
-    path: "/admin/media",
+    path: "/admin-portifolio/admin/media",
     title: "Redes Sociais"
   },
   {
-    path: "/admin/skill",
+    path: "/admin-portifolio/admin/skill",
     title: "Habilidades"
   },
   {
-    path: "/admin/blog",
+    path: "/admin-portifolio/admin/blog",
     title: "Blog"
   }
 ]
@@ -53,7 +52,7 @@ class Header extends Component {
     return (
       // <!-- Navigation -->
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link to={'/admin'} className="navbar-brand">Painel Admin - Portifolio</Link>
+      <Link to={'/admin-portifolio/admin'} className="navbar-brand">Painel Admin - Portifolio</Link>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           {
