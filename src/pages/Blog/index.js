@@ -34,9 +34,9 @@ export default class Index extends Component {
   onDelete(id) {
     BlogAPI.delete(id)
     .then( response =>{
-      this.props.history.push('/blog')
+      this.props.history.push(`${this.state.pathname}`)
     }).catch( error =>{
-      this.props.history.push('/blog')
+      this.props.history.push(`${this.state.pathname}`)
     })
   }
 

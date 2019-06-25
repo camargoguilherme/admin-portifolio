@@ -52,13 +52,13 @@ export default class Create extends Component {
     data.append('curriculum', this.state.curriculum);
     
     ProfileAPI.create(data).then( () =>{
-      this.props.history.push('/profile');  
+      this.props.history.push('/admin/profile');  
     })
     
   }
   onCancel = (e) => {
     e.preventDefault();
-    this.props.history.push('/profile')
+    this.props.history.push('/admin/profile')
   }
  
   render() {

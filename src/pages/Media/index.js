@@ -34,9 +34,9 @@ export default class Index extends Component {
   onDelete(id) {
     MediaAPI.delete(id)
     .then( response =>{
-      this.props.location('/media')
+      this.props.location(`${this.state.pathname}`)
     }).catch( error =>{
-      this.props.history.push('/media')
+      this.props.history.push(`${this.state.pathname}`)
     })
   }
 

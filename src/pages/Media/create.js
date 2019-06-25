@@ -35,7 +35,7 @@ export default class Create extends Component {
     };
     
     MediaAPI.create(item).then( () =>{
-      this.props.history.push('/about')
+      this.props.history.push('/admin/media')
     })
     
     this.setState({
@@ -46,7 +46,7 @@ export default class Create extends Component {
 
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/about')
+    this.props.history.push('/admin/media')
   }
  
   render() {

@@ -34,7 +34,7 @@ export default class Create extends Component {
     };
     
     AboutAPI.create(item).then( () =>{
-      this.props.history.push('/about')
+      this.props.history.push('/admin/about')
     })
     
     this.setState({
@@ -45,7 +45,7 @@ export default class Create extends Component {
 
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/about')
+    this.props.history.push('/admin/about')
   }
  
   render() {

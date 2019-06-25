@@ -41,13 +41,13 @@ export default class Create extends Component {
     data.append('_method', 'PUT');
     
     BlogAPI.create(data).then( () =>{
-      this.props.history.push('/blog');  
+      this.props.history.push('/admin/blog');  
     })
     
   }
   onCancel = (e) => {
     e.preventDefault();
-    this.props.history.push('/blog')
+    this.props.history.push('/admin/blog')
   }
  
   render() {

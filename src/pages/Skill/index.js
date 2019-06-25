@@ -34,9 +34,9 @@ export default class Index extends Component {
   onDelete(id) {
     SkillAPI.delete(id)
     .then( response =>{
-      this.props.history.push('/skill')
+      this.props.history.push(`${this.state.pathname}`)
     }).catch( error =>{
-      this.props.history.push('/skill')
+      this.props.history.push(`${this.state.pathname}`)
     })
   }
 

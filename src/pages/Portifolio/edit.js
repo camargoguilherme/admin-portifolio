@@ -56,13 +56,13 @@ export default class Edit extends Component {
     const id = this.props.match.params.id;
 
     PortifolioAPI.update(id, data).then( () =>{
-      this.props.history.push('/portifolio');  
+      this.props.history.push('/admin/portifolio');  
     })
     
   }
   onCancel = (e) => {
     e.preventDefault();
-    this.props.history.push('/portifolio')
+    this.props.history.push('/admin/portifolio')
   }
  
   render() {

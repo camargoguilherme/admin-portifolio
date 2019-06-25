@@ -34,9 +34,9 @@ export default class Index extends Component {
   onDelete(id) {
     DetailsAPI.delete(id)
     .then( response =>{
-      this.props.location('/details')
+      this.props.location(`${this.state.pathname}`)
     }).catch( error =>{
-      this.props.history.push('/details')
+      this.props.history.push(`${this.state.pathname}`)
     })
   }
 

@@ -50,13 +50,13 @@ export default class Edit extends Component {
       id: this.props.match.params.id
     };
     DetailsAPI.update(item).then( () =>{
-      this.props.history.push('/details');  
+      this.props.history.push('/admin/details');  
     })
     
   }
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/details')
+    this.props.history.push('/admin/details')
   }
  
   render() {

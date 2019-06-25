@@ -48,13 +48,13 @@ export default class Edit extends Component {
       id: this.props.match.params.id
     };
     MediaAPI.update(item).then( () =>{
-      this.props.history.push('/media');  
+      this.props.history.push('/admin/media');  
     })
     
   }
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/media')
+    this.props.history.push('/admin/media')
   }
  
   render() {

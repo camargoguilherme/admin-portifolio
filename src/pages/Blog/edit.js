@@ -59,13 +59,13 @@ export default class Edit extends Component {
     const id = this.props.match.params.id;
 
     BlogAPI.update(id, data).then( () =>{
-      this.props.history.push('/blog');  
+      this.props.history.push('/admin/blog');  
     })
     
   }
   onCancel = (e) => {
     e.preventDefault();
-    this.props.history.push('/blog')
+    this.props.history.push('/admin/blog')
   }
  
   render() {

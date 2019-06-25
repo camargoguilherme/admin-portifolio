@@ -26,7 +26,7 @@ export default class Create extends Component {
       title: this.state.title
     };
     SkillAPI.create(item).then( () =>{
-      this.props.history.push('/about')
+      this.props.history.push('/admin/skill')
     })
     
     this.setState({
@@ -36,7 +36,7 @@ export default class Create extends Component {
 
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/about')
+    this.props.history.push('/admin/skill')
   }
  
   render() {

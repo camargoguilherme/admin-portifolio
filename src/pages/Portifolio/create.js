@@ -39,13 +39,13 @@ export default class Create extends Component {
     data.append('_method', 'PUT');
     
     PortifolioAPI.create(data).then( () =>{
-      this.props.history.push('/portifolio');  
+      this.props.history.push('/admin/portifolio');  
     })
     
   }
   onCancel = (e) => {
     e.preventDefault();
-    this.props.history.push('/portifolio')
+    this.props.history.push('/admin/portifolio')
   }
  
   render() {
