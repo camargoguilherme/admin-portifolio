@@ -1,9 +1,9 @@
 // edit.js
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
-import { Link} from "react-router-dom";
 
 import BlogAPI from '../../services/blog';
+import { path } from '../../const/path';
 
 export default class Edit extends Component {
   constructor(props) {
@@ -59,13 +59,13 @@ export default class Edit extends Component {
     const id = this.props.match.params.id;
 
     BlogAPI.update(id, data).then( () =>{
-      this.props.history.push('/admin/blog');  
+      this.props.history.push(`${path}/admin/blog`);  
     })
     
   }
   onCancel = (e) => {
     e.preventDefault();
-    this.props.history.push('/admin/blog')
+    this.props.history.push(`${path}/admin/blog`)
   }
  
   render() {

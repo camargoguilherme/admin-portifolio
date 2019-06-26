@@ -2,34 +2,36 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { logout } from '../../services/auth';
 import ItemMenu from '../ItemMenu';
+import { path } from '../../const/path';
+
 const menus = [
 
   {
-    path: "/admin-portifolio/admin/profile",
+    path: `${path}/admin/profile`,
     title: "Perfil"
   },
   {
-    path: "/admin-portifolio/admin/about",
+    path: `${path}/admin/about`,
     title: "Sobre"
   },
   {
-    path: "/admin-portifolio/admin/portifolio",
+    path: `${path}/admin/portifolio`,
     title: "Portifolio"
   },
   {
-    path: "/admin-portifolio/admin/details",
+    path: `${path}/admin/details`,
     title: "Detalhes"
   },
   {
-    path: "/admin-portifolio/admin/media",
+    path: `${path}/admin/media`,
     title: "Redes Sociais"
   },
   {
-    path: "/admin-portifolio/admin/skill",
+    path: `${path}/admin/skill`,
     title: "Habilidades"
   },
   {
-    path: "/admin-portifolio/admin/blog",
+    path: `${path}/admin/blog`,
     title: "Blog"
   }
 ]
@@ -45,7 +47,7 @@ class Header extends Component {
   logout = (e) => {
     e.preventDefault();
     logout();
-    window.location = "/";
+    window.location = path;
   }
   
   render() {

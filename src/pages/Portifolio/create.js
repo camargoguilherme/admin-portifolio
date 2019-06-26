@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 
 import PortifolioAPI from '../../services/portifolio';
+import { path } from '../../const/path';
 
 export default class Create extends Component {
   constructor(props) {
@@ -39,13 +40,13 @@ export default class Create extends Component {
     data.append('_method', 'PUT');
     
     PortifolioAPI.create(data).then( () =>{
-      this.props.history.push('/admin/portifolio');  
+      this.props.history.push(`${path}/admin/portifolio`);  
     })
     
   }
   onCancel = (e) => {
     e.preventDefault();
-    this.props.history.push('/admin/portifolio')
+    this.props.history.push(`${path}/admin/portifolio`)
   }
  
   render() {

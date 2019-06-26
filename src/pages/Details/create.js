@@ -1,7 +1,7 @@
 // create.js
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import DetailsAPI from '../../services/detail';
+import { path } from '../../const/path';
 
 export default class Create extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ export default class Create extends Component {
     };
 
     DetailsAPI.create(detail).then( () =>{
-      this.props.history.push('/admin/details')
+      this.props.history.push(`${path}/admin/details`)
     })
     
     this.setState({
@@ -46,7 +46,7 @@ export default class Create extends Component {
 
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/admin/details')
+    this.props.history.push(`${path}/admin/details`)
   }
  
   render() {

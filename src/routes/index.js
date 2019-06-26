@@ -13,7 +13,8 @@ import Media from "../routes/media";
 import Portifolio from "../routes/portifolio";
 import Profile from "../routes/profile";
 import Skill from "../routes/skill";
-const path = '/admin-portifolio/admin'
+import { path } from '../const/path';
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -21,7 +22,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       isAuthenticated() ? (
         <Component {...props} />
       ) : (
-        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+        <Redirect to={{ pathname: path, state: { from: props.location } }} />
       )
     }
   />
@@ -34,7 +35,7 @@ const PublicRoute = ({ component: Component, ...rest }) => (
       !isAuthenticated() ? (
         <Component {...props} />
       ) : (
-        <Redirect to={{ pathname: `${path}`, state: { from: props.location } }} />
+        <Redirect to={{ pathname: `${path}/admin`, state: { from: props.location } }} />
       )
     }
   />
@@ -44,13 +45,13 @@ const PrivateRoutes = () => {
   return (
   <BrowserRouter>
     <Header />
-    <Route path={`${path}/about`} component={About} />
-    <Route path={`${path}/blog`} component={Blog} />
-    <Route path={`${path}/details`} component={Details} />
-    <Route path={`${path}/media`} component={Media} />
-    <Route path={`${path}/portifolio`} component={Portifolio} />
-    <Route path={`${path}/profile`} component={Profile} />
-    <Route path={`${path}/skill`} component={Skill} />
+    <Route path={`${path}/admin/about`} component={About} />
+    <Route path={`${path}/admin/blog`} component={Blog} />
+    <Route path={`${path}/admin/details`} component={Details} />
+    <Route path={`${path}/admin/media`} component={Media} />
+    <Route path={`${path}/admin/portifolio`} component={Portifolio} />
+    <Route path={`${path}/admin/profile`} component={Profile} />
+    <Route path={`${path}/admin/skill`} component={Skill} />
   </BrowserRouter>
   )
 }
@@ -58,7 +59,7 @@ const PrivateRoutes = () => {
 const PublicRoutes = () => {
   return (
   <BrowserRouter>
-    <Route exat path="/" component={Login} />
+    <Route path={path} component={Login} />
   </BrowserRouter>
   )
 }
@@ -69,7 +70,7 @@ class Router extends Component {
       <BrowserRouter>
         <div className="container">
           <Switch>
-            <PrivateRoute path={path} component={PrivateRoutes} />
+            <PrivateRoute exact path={`${path}/admin`} component={PrivateRoutes} />
             <PublicRoute path="/" component={PublicRoutes} />
           </Switch>
         </div>

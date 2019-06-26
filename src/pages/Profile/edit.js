@@ -1,7 +1,7 @@
 // edit.js
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
-import { Link} from "react-router-dom";
+import { path } from '../../const/path';
 
 import ProfileAPI from '../../services/profile';
 
@@ -66,20 +66,20 @@ export default class Edit extends Component {
     data.append('email', this.state.email);
     data.append('area', this.state.area);
     data.append('phone', this.state.phone);
-    data.append('avatar', this.state.avatar);
-    data.append('curriculum', this.state.curriculum);
+    this.state.avatar && data.append('avatar', this.state.avatar);
+    this.state.curriculum && data.append('curriculum', this.state.curriculum);
     data.append('_method', 'PUT');
 
     const id = this.props.match.params.id;
 
     ProfileAPI.update(id, data).then( () =>{
-      this.props.history.push('/admin/profile');  
+      this.props.history.push(`${path}/admin/profile`);  
     })
     
   }
   onCancel = (e) => {
     e.preventDefault();
-    this.props.history.push('/admin/profile')
+    this.props.history.push(`${path}/admin/profile`)
   }
  
   render() {

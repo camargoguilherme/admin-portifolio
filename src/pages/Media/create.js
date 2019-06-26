@@ -1,7 +1,7 @@
 // create.js
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import MediaAPI from '../../services/media';
+import { path } from '../../const/path';
 
 export default class Create extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ export default class Create extends Component {
     };
     
     MediaAPI.create(item).then( () =>{
-      this.props.history.push('/admin/media')
+      this.props.history.push(`${path}/admin/media`)
     })
     
     this.setState({
@@ -46,7 +46,7 @@ export default class Create extends Component {
 
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/admin/media')
+    this.props.history.push(`${path}/admin/media`)
   }
  
   render() {

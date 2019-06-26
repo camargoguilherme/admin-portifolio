@@ -1,6 +1,7 @@
 // create.js
 import React, { Component } from 'react';
 import AboutAPI from '../../services/about';
+import { path } from '../../const/path';
 
 export default class Create extends Component {
   constructor(props) {
@@ -34,7 +35,7 @@ export default class Create extends Component {
     };
     
     AboutAPI.create(item).then( () =>{
-      this.props.history.push('/admin/about')
+      this.props.history.push(`${path}/admin/about`)
     })
     
     this.setState({
@@ -45,7 +46,7 @@ export default class Create extends Component {
 
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/admin/about')
+    this.props.history.push(`${path}/admin/about`)
   }
  
   render() {

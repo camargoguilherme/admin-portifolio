@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import UserApi from '../../services/user';
 import { login } from '../../services/auth';
 import './styles.css';
+import { path } from '../../const/path';
 
 export default class Login extends Component {
   constructor(props) {
@@ -34,15 +35,10 @@ export default class Login extends Component {
     if (res.token) {
       console.log(res)
       login(res.token)
-      window.location = "/admin"
+      window.location = `${path}/admin`
     } else {
       this.setState({ message: res.message, loadning: false })
     }
-  }
-
-  onCancel = (e) => {
-    e.preventDefault();
-    this.props.history.push('/')
   }
 
   render() {

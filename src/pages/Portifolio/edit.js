@@ -1,7 +1,7 @@
 // edit.js
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
-import { Link} from "react-router-dom";
+import { path } from '../../const/path';
 
 import PortifolioAPI from '../../services/portifolio';
 
@@ -56,13 +56,13 @@ export default class Edit extends Component {
     const id = this.props.match.params.id;
 
     PortifolioAPI.update(id, data).then( () =>{
-      this.props.history.push('/admin/portifolio');  
+      this.props.history.push(`${path}/admin/portifolio`);  
     })
     
   }
   onCancel = (e) => {
     e.preventDefault();
-    this.props.history.push('/admin/portifolio')
+    this.props.history.push(`${path}/admin/portifolio`)
   }
  
   render() {

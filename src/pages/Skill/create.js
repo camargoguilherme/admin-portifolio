@@ -1,7 +1,7 @@
 // create.js
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import SkillAPI from '../../services/skill';
+import { path } from '../../const/path';
 
 export default class Create extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ export default class Create extends Component {
       title: this.state.title
     };
     SkillAPI.create(item).then( () =>{
-      this.props.history.push('/admin/skill')
+      this.props.history.push(`${path}/admin/skill`)
     })
     
     this.setState({
@@ -36,7 +36,7 @@ export default class Create extends Component {
 
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/admin/skill')
+    this.props.history.push(`${path}/admin/skill`)
   }
  
   render() {

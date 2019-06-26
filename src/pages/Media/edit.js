@@ -1,7 +1,7 @@
 // edit.js
 import React, { Component } from 'react';
 import MediaAPI from '../../services/media';
-import { Link} from "react-router-dom";
+import { path } from '../../const/path';
 
 export default class Edit extends Component {
   constructor(props) {
@@ -48,13 +48,13 @@ export default class Edit extends Component {
       id: this.props.match.params.id
     };
     MediaAPI.update(item).then( () =>{
-      this.props.history.push('/admin/media');  
+      this.props.history.push(`${path}/admin/media`);  
     })
     
   }
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/admin/media')
+    this.props.history.push(`${path}/admin/media`)
   }
  
   render() {

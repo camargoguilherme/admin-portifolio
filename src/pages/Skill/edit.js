@@ -1,7 +1,7 @@
 // edit.js
 import React, { Component } from 'react';
-import AboutAPI from '../../services/about';
-import { Link} from "react-router-dom";
+import SkillAPI from '../../services/skill';
+import { path } from '../../const/path';
 
 export default class Edit extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export default class Edit extends Component {
   }
 
   componentDidMount() {    
-    AboutAPI.find(this.props.match.params.id)
+    SkillAPI.find(this.props.match.params.id)
     .then(response => {
       this.setState({ 
         title: response.title,
@@ -47,14 +47,14 @@ export default class Edit extends Component {
       items: this.state.items,
       id: this.props.match.params.id
     };
-    AboutAPI.update(item).then( () =>{
-      this.props.history.push('/admin/skill');  
+    SkillAPI.update(item).then( () =>{
+      this.props.history.push(`${path}/admin/skill`);  
     })
     
   }
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/admin/skill')
+    this.props.history.push(`${path}/admin/skill`)
   }
  
   render() {

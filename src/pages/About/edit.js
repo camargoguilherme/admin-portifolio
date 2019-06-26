@@ -1,7 +1,7 @@
 // edit.js
 import React, { Component } from 'react';
 import AboutAPI from '../../services/about';
-import { Link} from "react-router-dom";
+import { path } from '../../const/path';
 
 export default class Edit extends Component {
   constructor(props) {
@@ -48,13 +48,13 @@ export default class Edit extends Component {
       id: this.props.match.params.id
     };
     AboutAPI.update(item).then( () =>{
-      this.props.history.push('/admin/about');  
+      this.props.history.push(`${path}/admin/about`);  
     })
     
   }
   onCancel(e){
     e.preventDefault();
-    this.props.history.push('/admin/about')
+    this.props.history.push(`${path}/admin/about`)
   }
  
   render() {

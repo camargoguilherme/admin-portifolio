@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 
 import BlogAPI from '../../services/blog';
+import { path } from '../../const/path';
 
 export default class Create extends Component {
   constructor(props) {
@@ -41,13 +42,13 @@ export default class Create extends Component {
     data.append('_method', 'PUT');
     
     BlogAPI.create(data).then( () =>{
-      this.props.history.push('/admin/blog');  
+      this.props.history.push(`${path}/admin/blog`);  
     })
     
   }
   onCancel = (e) => {
     e.preventDefault();
-    this.props.history.push('/admin/blog')
+    this.props.history.push(`${path}/admin/blog`)
   }
  
   render() {
